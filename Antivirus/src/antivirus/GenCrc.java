@@ -18,16 +18,23 @@ import java.util.zip.CRC32;
  */
 public class GenCrc extends CRC32
 {
-    public long crcInput(String file) throws IOException
+    public long crcInput(String file)
     {
-        InputStream input = new BufferedInputStream(new FileInputStream(file));
-        int reader;
-        
-        while ((reader = input.read()) != -1)
+        try
         {
-            this.update(reader);
+            InputStream input = new BufferedInputStream(new FileInputStream(file));
+            int reader;
+        
+            while ((reader = input.read()) != -1)
+            {
+                this.update(reader);
+            }
+            input.close();
         }
-        input.close();
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
         return this.getValue();
     }
 }

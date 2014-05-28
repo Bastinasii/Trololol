@@ -27,15 +27,9 @@ public class Antivirus
 //        GenCrc crc = new GenCrc();
 //        Scanner read = new Scanner(System.in);
 //        
-//        String fileToCrc = "D:\\Downloads\\Arrow.S02E21.720p.HDTV.X264-DIMENSION\\Sample\\capt.jack.sparrow.221.720p-dimension.sample.mkv";
-//        try
-//        {
-//            JOptionPane.showMessageDialog(message, crc.crcInput(fileToCrc));
-//        }
-//        catch(IOException e)
-//        {
-//            e.printStackTrace();
-//        }
+//        String fileToCrc = "D:\\Downloads\\Arrow.S02E21.720p.HDTV.X264-DIMENSION\\Arrow.S02E21.720p.HDTV.X264-DIMENSION.mkv";
+
+//        JOptionPane.showMessageDialog(message, crc.crcInput(fileToCrc));
         
     }
 }
