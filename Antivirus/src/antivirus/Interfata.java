@@ -1,4 +1,4 @@
-<<<<<<< HEAD:Antivirus/src/antivirus/Interfata.java
+//<<<<<<< HEAD:Antivirus/src/antivirus/Interfata.java
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,22 +12,24 @@ package antivirus;
  * @author David
  */
 public class Interfata {
-    
+    public static void main(String[] args) 
+    {
+    }
 }
-=======
+/*=======
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-package antivirus;
+//package antivirus;
 
 /**
  *
  * @author Alex
  */
-import java.io.IOException;
+/*import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
@@ -39,8 +41,8 @@ public class Antivirus
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
-    {
+   //* public static void main(String[] args) 
+    //{
 //        JFrame message = new JFrame();
 //        GenCrc crc = new GenCrc();
 //        Scanner read = new Scanner(System.in);
@@ -49,6 +51,6 @@ public class Antivirus
 
 //        JOptionPane.showMessageDialog(message, crc.crcInput(fileToCrc));
         
-    }
-}
->>>>>>> abd14a397ddb83c1b79e8a271a9bac29cf2e2443:Antivirus/src/antivirus/Antivirus.java
+  //  }
+//}
+//>>>>>>> abd14a397ddb83c1b79e8a271a9bac29cf2e2443:Antivirus/src/antivirus/Antivirus.java
