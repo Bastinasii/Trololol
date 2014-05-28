@@ -10,13 +10,32 @@ package antivirus;
  *
  * @author Alex
  */
-public class Antivirus {
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+
+public class Antivirus 
+{
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) 
+    {
+//        JFrame message = new JFrame();
+//        GenCrc crc = new GenCrc();
+//        Scanner read = new Scanner(System.in);
+//        
+//        String fileToCrc = "D:\\Downloads\\Arrow.S02E21.720p.HDTV.X264-DIMENSION\\Sample\\capt.jack.sparrow.221.720p-dimension.sample.mkv";
+//        try
+//        {
+//            JOptionPane.showMessageDialog(message, crc.crcInput(fileToCrc));
+//        }
+//        catch(IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+        
     }
-    
 }
