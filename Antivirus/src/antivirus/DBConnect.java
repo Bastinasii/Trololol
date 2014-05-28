@@ -85,7 +85,7 @@ public class DBConnect
             st.setString(5, path);
             st.setString(6, size);
             st.setString(7, crc);
-            st.executeQuery();
+            st.executeUpdate();
         }
         catch (SQLException e)
         {
