@@ -92,4 +92,48 @@ public class DBConnect
             e.printStackTrace();
         }
     }
+    
+    public static boolean fileExists (String path)
+    {
+        boolean exists = false;
+        
+        String sql = "SELECT COUNT(*) FROM FISIERE WHERE PATH = ?";
+        ResultSet result;
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, path);
+            result = st.executeQuery();
+            if (result.getInt(1) != 0) exists = true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }       
+        return exists;
+    }
+    
+    public static boolean fileIsModified (String path, String crc)
+    {
+        boolean isModified = false;
+        
+        String sql = "SELECT * FROM FISIERE WHERE PATH = ?";
+        ResultSet result;
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, path);
+            result = st.executeQuery();
+            if (!(result.getString(7).equals(crc))) isModified = true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }       
+        return isModified;
+    }
 }
