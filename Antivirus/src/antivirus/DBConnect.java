@@ -136,4 +136,28 @@ public class DBConnect
         }       
         return isModified;
     }
+    
+    public static void updateFile(String nume, String extensie, String data_c, String data_m, String path, String size, String crc)
+    {
+        String sql = "UPDATE FISIERE SET NUME=?, EXTENSIE=?, DATA_C=?, DATA_M=?, PATH=?, SIZE=?, CRC=? WHERE PATH=?";
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, nume);
+            st.setString(2, extensie);
+            st.setString(3, data_c);
+            st.setString(4, data_m);
+            st.setString(5, path);
+            st.setString(6, size);
+            st.setString(7, crc);
+            st.setString(8, path);
+            st.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
