@@ -106,6 +106,7 @@ public class DBConnect
             
             st.setString(1, path);
             result = st.executeQuery();
+            result.first();
             if (result.getInt(1) != 0) exists = true;
         }
         catch (SQLException e)
@@ -125,7 +126,6 @@ public class DBConnect
         try
         {
             PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
-            
             st.setString(1, path);
             result = st.executeQuery();
             if (!(result.getString(7).equals(crc))) isModified = true;
