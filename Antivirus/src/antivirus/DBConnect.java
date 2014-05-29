@@ -161,4 +161,23 @@ public class DBConnect
             e.printStackTrace();
         }
     }
+    
+    public static void insertVirus(String nume, String categorie, String semnatura)
+    {
+        String sql = "INSERT INTO semnaturi (nume_v, categorie, semnatura) " + "VALUES (?, ?, ?)";
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, nume);
+            st.setString(2, categorie);
+            st.setString(3, semnatura);
+            st.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
