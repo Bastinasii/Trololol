@@ -428,11 +428,12 @@ public class TabbedPanels extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         File f=chooser.getCurrentDirectory();
         String filename = f.getAbsolutePath();
-<<<<<<< HEAD
+        pathProtect.setText(filename);
+/*<<<<<<< HEAD
         path.setText(filename);      
 =======
         pathProtect.setText(filename);
->>>>>>> 747ec66c22d68da964cac8846307bb8883bc527f
+>>>>>>> 747ec66c22d68da964cac8846307bb8883bc527f*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
