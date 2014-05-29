@@ -164,44 +164,49 @@ public class DBConnect
         }
     }
     
-<<<<<<< HEAD
     public static Semnatura getNumeSiCategorie (String semnatura)
     {
         Semnatura virus = new Semnatura();
         ResultSet result;
         
         String sql = "SELECT * FROM SEMNATURI WHERE SEMNATURA = ?";
-=======
-    public static void insertVirus(String nume, String categorie, String semnatura)
-    {
-        String sql = "INSERT INTO semnaturi (nume_v, categorie, semnatura) " + "VALUES (?, ?, ?)";
->>>>>>> 1d862597c24811a4f44d61b360dd0a3a0edab808
         
         try
         {
             PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
             
-<<<<<<< HEAD
             st.setString(1, semnatura);
             result = st.executeQuery();
             result.first();
             virus.nume = result.getString(1);
             virus.categorie = result.getString(2);
             virus.semnatura = semnatura;
-=======
-            st.setString(1, nume);
-            st.setString(2, categorie);
-            st.setString(3, semnatura);
-            st.executeUpdate();
->>>>>>> 1d862597c24811a4f44d61b360dd0a3a0edab808
         }
         catch (SQLException e)
         {
             e.printStackTrace();
         }
-<<<<<<< HEAD
         
         return virus;
+    }
+
+     public static void insertVirus(String nume, String categorie, String semnatura)
+    {
+        String sql = "INSERT INTO semnaturi (nume_v, categorie, semnatura) " + "VALUES (?, ?, ?)";
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, nume);
+            st.setString(2, categorie);
+            st.setString(3, semnatura);
+            st.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
     
     public static List<String> getSemnaturi()
@@ -235,7 +240,5 @@ public class DBConnect
             e.printStackTrace();
         }        
         return semnaturi;
-=======
->>>>>>> 1d862597c24811a4f44d61b360dd0a3a0edab808
     }
 }
