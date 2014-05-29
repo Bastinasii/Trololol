@@ -32,13 +32,66 @@ public class TestareTanase {
     {
       if (listOfFiles[i].isFile()) {
         System.out.println("File " + listOfFiles[i].getName());
-        copac.adaugNod(1,listOfFiles[i].getPath());
-        //list.add(listOfFiles[i].getPath());
+        
+        
+        List<String> listExt=getExtensii();
+        
+        String ext="";
+        if (null != listOfFiles[i].getName() && listOfFiles[i].getName().length() > 0 )
+        {
+            int endIndex = listOfFiles[i].getName().lastIndexOf(".");
+            if (endIndex != -1)  
+            {
+                ext = listOfFiles[i].getName().substring(endIndex, listOfFiles[i].getName().length()); // not forgot to put check if(endIndex != -1)
+            }
+        }  
+        
+        for(String str: listExt) 
+        {
+            if(str.trim().contains(ext))
+            {
+                copac.adaugNod(1,listOfFiles[i].getPath());
+                System.out.println(ext);
+            }
+        }
+        
+ 
       } else if (listOfFiles[i].isDirectory()) {
         System.out.println("Directory " + listOfFiles[i].getName());
         getList(listOfFiles[i].getPath());
       }
     }
+    }
+    public static List<String> getExtensii()
+    {
+        BufferedReader in = null;
+        FileReader fr = null;
+        List<String> listaExtensii = new ArrayList<String>();
+
+        try {
+            //fr = new FileReader("C:/Users/Iulia/Documents/NetBeansProjects/BojaProj/src/bojaproj/ext.txt");
+            fr = new FileReader(System.getProperty("user.dir")+"/ext.txt");
+            in = new BufferedReader(fr);
+            String str;
+            while ((str = in.readLine()) != null) {
+                listaExtensii.add(str);
+                
+            
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        finally
+        {
+            try{
+            in.close();
+            fr.close();}
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        return listaExtensii;
     }
     public static void uploadItems(nodAVL n)
     {
@@ -70,5 +123,10 @@ public class TestareTanase {
     getList("C:\\Users\\Tanase\\Pictures");
     copac.afisareContinutArbore(copac.root);
     uploadItems(copac.root);
+    List<String> list = getExtensii();
+    for(int i=0;i<list.size();i++){
+    System.out.println(list.get(i));
+    } 
+
     }
 }
