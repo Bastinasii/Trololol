@@ -48,12 +48,12 @@ public class TabbedPanels extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        pathProtect = new javax.swing.JTextPane();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        path = new javax.swing.JTextPane();
+        pathScan = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
@@ -83,8 +83,13 @@ public class TabbedPanels extends javax.swing.JFrame {
         jButton2.setText("Protect");
 
         jButton3.setText("Browse");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(pathProtect);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,7 +130,7 @@ public class TabbedPanels extends javax.swing.JFrame {
 
         jButton4.setText("Scan");
 
-        jScrollPane5.setViewportView(path);
+        jScrollPane5.setViewportView(pathScan);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -382,8 +387,17 @@ public class TabbedPanels extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         File f=chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
-        path.setText(filename);      
+        pathScan.setText(filename);      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f=chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        pathProtect.setText(filename);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,10 +465,10 @@ public class TabbedPanels extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
-    private javax.swing.JTextPane path;
+    private javax.swing.JTextPane pathProtect;
+    private javax.swing.JTextPane pathScan;
     // End of variables declaration//GEN-END:variables
 }
