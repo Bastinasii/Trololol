@@ -128,6 +128,7 @@ public class DBConnect
             PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
             st.setString(1, path);
             result = st.executeQuery();
+            result.first();
             if (!(result.getString(7).equals(crc))) isModified = true;
         }
         catch (SQLException e)
