@@ -46,12 +46,14 @@ public class TestareTanase {
             }
         }  
         
+        
+            
         for(String str: listExt) 
         {
             if(str.trim().contains(ext))
             {
                 copac.adaugNod(1,listOfFiles[i].getPath());
-                System.out.println(ext);
+                //System.out.println(ext);
             }
         }
         
@@ -107,10 +109,30 @@ public class TestareTanase {
                 ext = n.cale.substring(endIndex, n.cale.length()); // not forgot to put check if(endIndex != -1)
             }
         }  
-        
+        try{
+        if(DBConnect.fileExists(n.cale))
+        {
+            System.out.println("A intrat in if");
+           if(DBConnect.fileIsModified(n.cale, Long.toBinaryString(crc.crcInput(nou.getPath())))) 
+           {
+               System.out.println("Exista si a fost modificat");
         DBConnect.insertFile(nou.getName(),ext, "nothing yet", Long.toString(nou.lastModified()), nou.getPath(), Long.toString(nou.getTotalSpace()),Long.toBinaryString(crc.crcInput(nou.getPath())) );
+           }
+           else{
+               System.out.println("Exista si nu a fost modificat");
+           }
+        }else
+        {
+            DBConnect.insertFile(nou.getName(),ext, "nothing yet", Long.toString(nou.lastModified()), nou.getPath(), Long.toString(nou.getTotalSpace()),Long.toBinaryString(crc.crcInput(nou.getPath())) );
+        }
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally{
+            DBConnect.close();
+        }
         
-        DBConnect.close();
         
         if(n.stanga!=null) {
         uploadItems(n.stanga);
@@ -118,6 +140,7 @@ public class TestareTanase {
         if(n.dreapta!=null) {
         uploadItems(n.dreapta);
         }
+        
     }
     public static void main(String [] args){
     getList("C:\\Users\\Tanase\\Pictures");
