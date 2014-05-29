@@ -16,6 +16,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DBConnect 
 {
@@ -160,5 +162,64 @@ public class DBConnect
         {
             e.printStackTrace();
         }
+    }
+    
+    public static Semnatura getNumeSiCategorie (String semnatura)
+    {
+        Semnatura virus = new Semnatura();
+        ResultSet result;
+        
+        String sql = "SELECT * FROM SEMNATURI WHERE SEMNATURA = ?";
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, semnatura);
+            result = st.executeQuery();
+            result.first();
+            virus.nume = result.getString(1);
+            virus.categorie = result.getString(2);
+            virus.semnatura = semnatura;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        
+        return virus;
+    }
+    
+    public static List<String> getSemnaturi()
+    {
+        List<String> semnaturi = new ArrayList<>();
+        ResultSet result;
+        
+        String sql = "SELECT SEMNATURA FROM SEMNATURI";
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            result = st.executeQuery();
+            int i=0;
+            if (result.first())
+            {
+                semnaturi.add(result.getString(1));
+                while (result.next())
+                {
+                    semnaturi.add(result.getString(1));
+                }
+            }
+            else
+            {
+                semnaturi = null;
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }        
+        return semnaturi;
     }
 }
