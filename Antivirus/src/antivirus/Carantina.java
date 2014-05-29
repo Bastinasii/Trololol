@@ -11,9 +11,10 @@ package antivirus;
  * @author Iulia
  */
 public class Carantina {
-     private String nume_vir;
-       private String categorie;
-       private String path;
+    public String path; 
+    public String nume_vir;
+    public String categorie;
+       
 
        public Carantina()
        {
@@ -36,5 +37,7 @@ public class Carantina {
        public void setName(String name) { this.nume_vir = name; }
        public void setCategorie(String categorie) { this.categorie = categorie; }
        public void setPath(String path) { this.path = path; }
+       
+       
     
 }

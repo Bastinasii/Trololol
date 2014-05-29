@@ -221,7 +221,7 @@ public class DBConnect
             PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
             
             result = st.executeQuery();
-            int i=0;
+            
             if (result.first())
             {
                 semnaturi.add(result.getString(1));
@@ -241,4 +241,64 @@ public class DBConnect
         }        
         return semnaturi;
     }
+    
+    public static void insertCarantina(String path, String nume, String categ)
+    {
+        String sql = "INSERT INTO carantina (path,nume_v, categorie) " + "VALUES (?, ?, ?)";
+        
+        try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            st.setString(1, path);
+            st.setString(2, nume);
+            st.setString(3, categ);
+            st.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public static List<Carantina> getCarantina()
+    {
+        List<Carantina> list = new ArrayList<Carantina>();
+        
+        Carantina car;
+        ResultSet result;
+        
+        String sql = "SELECT * FROM carantina";
+        
+         try
+        {
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            
+            
+            result = st.executeQuery();
+            if(result.first())
+            {
+            car = new Carantina();
+            car.path = result.getString(1);
+            car.nume_vir = result.getString(2);
+            car.categorie = result.getString(3);
+            
+            list.add(car);
+            }while(result.next())
+            {
+                car = new Carantina();
+            car.path = result.getString(1);
+            car.nume_vir = result.getString(2);
+            car.categorie = result.getString(3);
+            
+            list.add(car);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
 }

@@ -143,13 +143,18 @@ public class TestareTanase {
         
     }
     public static void main(String [] args){
-    getList("C:\\Users\\Tanase\\Pictures");
-    copac.afisareContinutArbore(copac.root);
-    uploadItems(copac.root);
-    List<String> list = getExtensii();
+    //getList("C:\\Users\\Tanase\\Pictures");
+    //copac.afisareContinutArbore(copac.root);
+    //uploadItems(copac.root);
+    //List<String> list = getExtensii();
+    System.out.println("Teeest");
+    DBConnect.open();
+    List<Carantina> list = DBConnect.getCarantina();
+    System.out.println(list.size());
     for(int i=0;i<list.size();i++){
-    System.out.println(list.get(i));
+        
+    System.out.println(list.get(i).path);
     } 
-
+    DBConnect.close();
     }
 }
